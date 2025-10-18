@@ -7,12 +7,13 @@
   import { UserMenu } from "@jsbursik/magic-ui";
   import { ToastContainer } from "@jsbursik/magic-ui";
   import { ModeToggle } from "@jsbursik/magic-ui";
-  import { IconWand } from "@tabler/icons-svelte";
+  import { IconCards } from "@tabler/icons-svelte";
   import { initAuthClient } from "@jsbursik/magic-ui";
   import { goto } from "$app/navigation";
   import { setContext } from "svelte";
   import { env } from "$env/dynamic/public";
-  import "$lib/styles/globals.css";
+  import "@jsbursik/magic-ui/styles";
+  import "./styles.css";
 
   let { children, data } = $props();
   let user = $derived(data.user);
@@ -29,11 +30,10 @@
 
 <Navbar>
   <NavbarBrand href="/">
-    <IconWand size={32} style="color: var(--color-primary)" />
-    <span>Magic UI</span>
+    <IconCards size={32} style="color: var(--color-primary)" />
+    <span>DraftBox</span>
   </NavbarBrand>
   <NavbarContent>
-    <NavLink href="/">Home</NavLink>
     <NavLink href="/css-demo">CSS Demo</NavLink>
     {#if user}
       <NavLink href="/secret">Secret</NavLink>
