@@ -4,6 +4,7 @@
   import { NavbarContent } from "@jsbursik/magic-ui";
   import { NavLink } from "@jsbursik/magic-ui";
   import { NavbarMenu } from "@jsbursik/magic-ui";
+  import { NavbarDropdown } from "@jsbursik/magic-ui";
   import { UserMenu } from "@jsbursik/magic-ui";
   import { ToastContainer } from "@jsbursik/magic-ui";
   import { ModeToggle } from "@jsbursik/magic-ui";
@@ -13,7 +14,6 @@
   import { setContext } from "svelte";
   import { env } from "$env/dynamic/public";
   import "@jsbursik/magic-ui/styles";
-  import "./styles.css";
 
   let { children, data } = $props();
   let user = $derived(data.user);
@@ -34,7 +34,16 @@
     <span>DraftBox</span>
   </NavbarBrand>
   <NavbarContent>
+    <NavLink href="/">Home</NavLink>
     <NavLink href="/css-demo">CSS Demo</NavLink>
+    <NavbarDropdown
+      name="Test"
+      menuItems={[
+        { label: "Test", href: "/test/test1" },
+        { label: "hr", divider: true },
+        { label: "Test 2", href: "/test/test2" },
+      ]}
+    />
     {#if user}
       <NavLink href="/secret">Secret</NavLink>
     {/if}
